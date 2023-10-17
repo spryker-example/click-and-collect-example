@@ -5,44 +5,44 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Business\QuoteItemReplacer;
+namespace SprykerExample\Zed\ClickAndCollectExample\Business\QuoteItemReplacer;
 
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\ProductOfferServicePointCriteriaTransfer;
 use Generated\Shared\Transfer\QuoteResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Spryker\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteResponseErrorAdderInterface;
-use Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface;
-use Spryker\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface;
-use Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig;
+use SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteResponseErrorAdderInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface;
+use SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig;
 
 class PickupQuoteItemReplacer implements QuoteItemReplacerInterface
 {
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface
      */
     protected ProductOfferServicePointReaderInterface $productOfferServicePointReader;
 
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface
      */
     protected ProductOfferReplacementFinderInterface $replacementFinder;
 
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteResponseErrorAdderInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteResponseErrorAdderInterface
      */
     protected QuoteResponseErrorAdderInterface $quoteResponseErrorAdder;
 
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig
+     * @var \SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig
      */
     protected ClickAndCollectExampleConfig $clickAndCollectExampleConfig;
 
     /**
-     * @param \Spryker\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface $productOfferServicePointReader
-     * @param \Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface $replacementFinder
-     * @param \Spryker\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteResponseErrorAdderInterface $quoteResponseErrorAdder
-     * @param \Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig $clickAndCollectExampleConfig
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface $productOfferServicePointReader
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface $replacementFinder
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteResponseErrorAdderInterface $quoteResponseErrorAdder
+     * @param \SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig $clickAndCollectExampleConfig
      */
     public function __construct(
         ProductOfferServicePointReaderInterface $productOfferServicePointReader,

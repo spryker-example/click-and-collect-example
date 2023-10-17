@@ -5,27 +5,27 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Business\Reader;
+namespace SprykerExample\Zed\ClickAndCollectExample\Business\Reader;
 
 use Generated\Shared\Transfer\ProductOfferServicePointCriteriaTransfer;
-use Spryker\Zed\ClickAndCollectExample\Business\Expander\ProductOfferServicePointExpanderInterface;
-use Spryker\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Expander\ProductOfferServicePointExpanderInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface;
 
 class ProductOfferServicePointReader implements ProductOfferServicePointReaderInterface
 {
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface
      */
     protected ClickAndCollectExampleRepositoryInterface $clickAndCollectExampleRepository;
 
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Business\Expander\ProductOfferServicePointExpanderInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Business\Expander\ProductOfferServicePointExpanderInterface
      */
     protected ProductOfferServicePointExpanderInterface $productOfferServicePointExpander;
 
     /**
-     * @param \Spryker\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface $clickAndCollectExampleRepository
-     * @param \Spryker\Zed\ClickAndCollectExample\Business\Expander\ProductOfferServicePointExpanderInterface $servicePointExpander
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface $clickAndCollectExampleRepository
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Business\Expander\ProductOfferServicePointExpanderInterface $servicePointExpander
      */
     public function __construct(
         ClickAndCollectExampleRepositoryInterface $clickAndCollectExampleRepository,

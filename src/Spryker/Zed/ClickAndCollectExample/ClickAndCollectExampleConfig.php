@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample;
+namespace SprykerExample\Zed\ClickAndCollectExample;
 
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 

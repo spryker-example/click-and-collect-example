@@ -1,5 +1,5 @@
 {
-    "name": "spryker/click-and-collect-example",
+    "name": "spryker-example/click-and-collect-example",
     "type": "library",
     "description": "ClickAndCollectExample module",
     "license": "MIT",
@@ -33,7 +33,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Spryker\\": "src/Spryker/"
+            "SprykerExample\\": "src/Spryker/"
         }
     },
     "autoload-dev": {

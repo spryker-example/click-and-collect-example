@@ -14,8 +14,8 @@ use Generated\Shared\Transfer\ProductOfferStorageTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
 use Generated\Shared\Transfer\ShipmentTypeStorageCollectionTransfer;
 use Generated\Shared\Transfer\ShipmentTypeStorageTransfer;
-use Spryker\Client\ClickAndCollectExample\ClickAndCollectExampleDependencyProvider;
-use Spryker\Client\ClickAndCollectExample\Dependency\Client\ClickAndCollectExampleToProductOfferStorageClientInterface;
+use SprykerExample\Client\ClickAndCollectExample\ClickAndCollectExampleDependencyProvider;
+use SprykerExample\Client\ClickAndCollectExample\Dependency\Client\ClickAndCollectExampleToProductOfferStorageClientInterface;
 use SprykerTest\Client\ClickAndCollectExample\ClickAndCollectExampleClientTester;
 
 /**
@@ -214,7 +214,7 @@ class FilterUnavailableProductOfferShipmentTypesTest extends Unit
     /**
      * @param \Generated\Shared\Transfer\ProductOfferStorageCollectionTransfer $productOfferStorageCollectionTransfer
      *
-     * @return \Spryker\Client\ClickAndCollectExample\Dependency\Client\ClickAndCollectExampleToProductOfferStorageClientInterface
+     * @return \SprykerExample\Client\ClickAndCollectExample\Dependency\Client\ClickAndCollectExampleToProductOfferStorageClientInterface
      */
     protected function createProductOfferStorageClientMock(
         ProductOfferStorageCollectionTransfer $productOfferStorageCollectionTransfer

@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Shared\ClickAndCollectExample;
+namespace SprykerExample\Shared\ClickAndCollectExample;
 
 use Spryker\Shared\Kernel\AbstractBundleConfig;
 

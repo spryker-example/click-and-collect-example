@@ -5,21 +5,21 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Client\ClickAndCollectExample;
+namespace SprykerExample\Client\ClickAndCollectExample;
 
-use Spryker\Client\ClickAndCollectExample\Calculator\ProductOfferServicePointAvailabilityCalculator;
-use Spryker\Client\ClickAndCollectExample\Calculator\ProductOfferServicePointAvailabilityCalculatorInterface;
-use Spryker\Client\ClickAndCollectExample\Dependency\Client\ClickAndCollectExampleToProductOfferStorageClientInterface;
-use Spryker\Client\ClickAndCollectExample\Filter\ShipmentTypeFilter;
-use Spryker\Client\ClickAndCollectExample\Filter\ShipmentTypeFilterInterface;
-use Spryker\Client\ClickAndCollectExample\Sorter\ProductOfferServicePointAvailabilityResponseItemSorter;
-use Spryker\Client\ClickAndCollectExample\Sorter\ProductOfferServicePointAvailabilityResponseItemSorterInterface;
+use SprykerExample\Client\ClickAndCollectExample\Calculator\ProductOfferServicePointAvailabilityCalculator;
+use SprykerExample\Client\ClickAndCollectExample\Calculator\ProductOfferServicePointAvailabilityCalculatorInterface;
+use SprykerExample\Client\ClickAndCollectExample\Dependency\Client\ClickAndCollectExampleToProductOfferStorageClientInterface;
+use SprykerExample\Client\ClickAndCollectExample\Filter\ShipmentTypeFilter;
+use SprykerExample\Client\ClickAndCollectExample\Filter\ShipmentTypeFilterInterface;
+use SprykerExample\Client\ClickAndCollectExample\Sorter\ProductOfferServicePointAvailabilityResponseItemSorter;
+use SprykerExample\Client\ClickAndCollectExample\Sorter\ProductOfferServicePointAvailabilityResponseItemSorterInterface;
 use Spryker\Client\Kernel\AbstractFactory;
 
 class ClickAndCollectExampleFactory extends AbstractFactory
 {
     /**
-     * @return \Spryker\Client\ClickAndCollectExample\Calculator\ProductOfferServicePointAvailabilityCalculatorInterface
+     * @return \SprykerExample\Client\ClickAndCollectExample\Calculator\ProductOfferServicePointAvailabilityCalculatorInterface
      */
     public function createProductOfferServicePointAvailabilityCalculator(): ProductOfferServicePointAvailabilityCalculatorInterface
     {
@@ -29,7 +29,7 @@ class ClickAndCollectExampleFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\ClickAndCollectExample\Sorter\ProductOfferServicePointAvailabilityResponseItemSorterInterface
+     * @return \SprykerExample\Client\ClickAndCollectExample\Sorter\ProductOfferServicePointAvailabilityResponseItemSorterInterface
      */
     public function createProductOfferServicePointAvailabilityResponseItemSorter(): ProductOfferServicePointAvailabilityResponseItemSorterInterface
     {
@@ -37,7 +37,7 @@ class ClickAndCollectExampleFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\ClickAndCollectExample\Filter\ShipmentTypeFilterInterface
+     * @return \SprykerExample\Client\ClickAndCollectExample\Filter\ShipmentTypeFilterInterface
      */
     public function createShipmentTypeFilter(): ShipmentTypeFilterInterface
     {
@@ -47,7 +47,7 @@ class ClickAndCollectExampleFactory extends AbstractFactory
     }
 
     /**
-     * @return \Spryker\Client\ClickAndCollectExample\Dependency\Client\ClickAndCollectExampleToProductOfferStorageClientInterface
+     * @return \SprykerExample\Client\ClickAndCollectExample\Dependency\Client\ClickAndCollectExampleToProductOfferStorageClientInterface
      */
     public function getProductOfferStorageClient(): ClickAndCollectExampleToProductOfferStorageClientInterface
     {
