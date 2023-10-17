@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample;
+namespace SprykerExample\Zed\ClickAndCollectExample;
 
 use Orm\Zed\PriceProductOffer\Persistence\SpyPriceProductOfferQuery;
 use Orm\Zed\ProductOffer\Persistence\SpyProductOfferQuery;
@@ -14,7 +14,7 @@ use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 
 /**
- * @method \Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig getConfig()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig getConfig()
  */
 class ClickAndCollectExampleDependencyProvider extends AbstractBundleDependencyProvider
 {

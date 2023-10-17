@@ -10,7 +10,7 @@ namespace SprykerTest\Client\ClickAndCollectExample\Plugin\ExampleClickAndCollec
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\ProductOfferServicePointAvailabilityCollectionTransfer;
 use Generated\Shared\Transfer\ProductOfferServicePointAvailabilityRequestItemTransfer;
-use Spryker\Client\ClickAndCollectExample\Plugin\ExampleClickAndCollectProductOfferServicePointAvailabilityCalculatorStrategyPlugin;
+use SprykerExample\Client\ClickAndCollectExample\Plugin\ExampleClickAndCollectProductOfferServicePointAvailabilityCalculatorStrategyPlugin;
 use SprykerTest\Client\ClickAndCollectExample\ClickAndCollectExampleClientTester;
 
 /**

@@ -5,22 +5,22 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder;
+namespace SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder;
 
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\ProductOfferServicePointTransfer;
 use Generated\Shared\Transfer\ProductOfferTransfer;
-use Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface;
 
 class ProductOfferReplacementFinder implements ProductOfferReplacementFinderInterface
 {
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface
      */
     protected ProductOfferReplacementCheckerInterface $productOfferReplacementChecker;
 
     /**
-     * @param \Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface $productOfferReplacementChecker
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface $productOfferReplacementChecker
      */
     public function __construct(
         ProductOfferReplacementCheckerInterface $productOfferReplacementChecker

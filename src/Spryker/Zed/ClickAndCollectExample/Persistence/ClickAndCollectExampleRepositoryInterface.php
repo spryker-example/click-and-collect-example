@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Persistence;
+namespace SprykerExample\Zed\ClickAndCollectExample\Persistence;
 
 use Generated\Shared\Transfer\ProductOfferServicePointCriteriaTransfer;
 
