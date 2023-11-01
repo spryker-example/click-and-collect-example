@@ -5,20 +5,20 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Business\Expander;
+namespace SprykerExample\Zed\ClickAndCollectExample\Business\Expander;
 
 use Generated\Shared\Transfer\ProductOfferServicePointCriteriaTransfer;
-use Spryker\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface;
 
 class ProductOfferServicePointExpander implements ProductOfferServicePointExpanderInterface
 {
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface
      */
     protected ClickAndCollectExampleRepositoryInterface $clickAndCollectExampleRepository;
 
     /**
-     * @param \Spryker\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface $clickAndCollectExampleRepository
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface $clickAndCollectExampleRepository
      */
     public function __construct(
         ClickAndCollectExampleRepositoryInterface $clickAndCollectExampleRepository

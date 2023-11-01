@@ -5,23 +5,23 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Client\ClickAndCollectExample\Calculator;
+namespace SprykerExample\Client\ClickAndCollectExample\Calculator;
 
 use Generated\Shared\Transfer\ProductOfferServicePointAvailabilityCollectionTransfer;
 use Generated\Shared\Transfer\ProductOfferServicePointAvailabilityConditionsTransfer;
 use Generated\Shared\Transfer\ProductOfferServicePointAvailabilityRequestItemTransfer;
 use Generated\Shared\Transfer\ProductOfferServicePointAvailabilityResponseItemTransfer;
-use Spryker\Client\ClickAndCollectExample\Sorter\ProductOfferServicePointAvailabilityResponseItemSorterInterface;
+use SprykerExample\Client\ClickAndCollectExample\Sorter\ProductOfferServicePointAvailabilityResponseItemSorterInterface;
 
 class ProductOfferServicePointAvailabilityCalculator implements ProductOfferServicePointAvailabilityCalculatorInterface
 {
     /**
-     * @var \Spryker\Client\ClickAndCollectExample\Sorter\ProductOfferServicePointAvailabilityResponseItemSorterInterface
+     * @var \SprykerExample\Client\ClickAndCollectExample\Sorter\ProductOfferServicePointAvailabilityResponseItemSorterInterface
      */
     protected ProductOfferServicePointAvailabilityResponseItemSorterInterface $productOfferServicePointAvailabilityResponseItemSorter;
 
     /**
-     * @param \Spryker\Client\ClickAndCollectExample\Sorter\ProductOfferServicePointAvailabilityResponseItemSorterInterface $productOfferServicePointAvailabilityResponseItemSorter
+     * @param \SprykerExample\Client\ClickAndCollectExample\Sorter\ProductOfferServicePointAvailabilityResponseItemSorterInterface $productOfferServicePointAvailabilityResponseItemSorter
      */
     public function __construct(ProductOfferServicePointAvailabilityResponseItemSorterInterface $productOfferServicePointAvailabilityResponseItemSorter)
     {

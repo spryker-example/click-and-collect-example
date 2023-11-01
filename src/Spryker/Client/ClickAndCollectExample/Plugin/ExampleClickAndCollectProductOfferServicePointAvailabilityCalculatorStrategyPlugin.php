@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Client\ClickAndCollectExample\Plugin;
+namespace SprykerExample\Client\ClickAndCollectExample\Plugin;
 
 use Generated\Shared\Transfer\ProductOfferServicePointAvailabilityCollectionTransfer;
 use Generated\Shared\Transfer\ProductOfferServicePointAvailabilityConditionsTransfer;
@@ -13,7 +13,7 @@ use Spryker\Client\Kernel\AbstractPlugin;
 use Spryker\Client\ProductOfferServicePointAvailabilityCalculatorStorageExtension\Dependency\Plugin\ProductOfferServicePointAvailabilityCalculatorStrategyPluginInterface;
 
 /**
- * @method \Spryker\Client\ClickAndCollectExample\ClickAndCollectExampleFactory getFactory()
+ * @method \SprykerExample\Client\ClickAndCollectExample\ClickAndCollectExampleFactory getFactory()
  */
 class ExampleClickAndCollectProductOfferServicePointAvailabilityCalculatorStrategyPlugin extends AbstractPlugin implements ProductOfferServicePointAvailabilityCalculatorStrategyPluginInterface
 {

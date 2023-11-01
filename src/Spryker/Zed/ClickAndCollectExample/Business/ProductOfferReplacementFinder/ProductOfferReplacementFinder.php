@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder;
+namespace SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder;
 
 use ArrayObject;
 use Generated\Shared\Transfer\ItemTransfer;
@@ -14,31 +14,31 @@ use Generated\Shared\Transfer\ProductOfferServicePointTransfer;
 use Generated\Shared\Transfer\ProductOfferTransfer;
 use Generated\Shared\Transfer\SellableItemRequestTransfer;
 use Generated\Shared\Transfer\SellableItemsRequestTransfer;
-use Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface;
-use Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeInterface;
-use Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToStoreFacadeInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToStoreFacadeInterface;
 
 class ProductOfferReplacementFinder implements ProductOfferReplacementFinderInterface
 {
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToStoreFacadeInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToStoreFacadeInterface
      */
     protected ClickAndCollectExampleToStoreFacadeInterface $storeFacade;
 
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeInterface
      */
     protected ClickAndCollectExampleToAvailabilityFacadeInterface $availabilityFacade;
 
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface
      */
     protected ProductOfferReplacementCheckerInterface $productOfferReplacementChecker;
 
     /**
-     * @param \Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToStoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeInterface $availabilityFacade
-     * @param \Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface $productOfferReplacementChecker
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToStoreFacadeInterface $storeFacade
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeInterface $availabilityFacade
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface $productOfferReplacementChecker
      */
     public function __construct(
         ClickAndCollectExampleToStoreFacadeInterface $storeFacade,

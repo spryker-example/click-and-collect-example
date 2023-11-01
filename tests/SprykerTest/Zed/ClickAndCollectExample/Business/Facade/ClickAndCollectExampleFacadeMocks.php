@@ -13,8 +13,8 @@ use Generated\Shared\Transfer\ProductOfferTransfer;
 use Generated\Shared\Transfer\SellableItemResponseTransfer;
 use Generated\Shared\Transfer\SellableItemsResponseTransfer;
 use Spryker\Zed\Availability\Business\AvailabilityFacadeInterface;
-use Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeBridge;
-use Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeBridge;
+use SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeInterface;
 use SprykerTest\Zed\ClickAndCollectExample\ClickAndCollectExampleBusinessTester;
 
 class ClickAndCollectExampleFacadeMocks extends Unit

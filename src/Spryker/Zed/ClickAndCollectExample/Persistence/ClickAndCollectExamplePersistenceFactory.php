@@ -5,25 +5,25 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Persistence;
+namespace SprykerExample\Zed\ClickAndCollectExample\Persistence;
 
 use Orm\Zed\PriceProductOffer\Persistence\SpyPriceProductOfferQuery;
 use Orm\Zed\ProductOffer\Persistence\SpyProductOfferQuery;
 use Orm\Zed\ProductOfferStock\Persistence\SpyProductOfferStockQuery;
-use Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleDependencyProvider;
-use Spryker\Zed\ClickAndCollectExample\Persistence\Propel\Mapper\PriceProductOfferMapper;
-use Spryker\Zed\ClickAndCollectExample\Persistence\Propel\Mapper\ProductOfferMapper;
-use Spryker\Zed\ClickAndCollectExample\Persistence\Propel\Mapper\ProductOfferStockMapper;
+use SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleDependencyProvider;
+use SprykerExample\Zed\ClickAndCollectExample\Persistence\Propel\Mapper\PriceProductOfferMapper;
+use SprykerExample\Zed\ClickAndCollectExample\Persistence\Propel\Mapper\ProductOfferMapper;
+use SprykerExample\Zed\ClickAndCollectExample\Persistence\Propel\Mapper\ProductOfferStockMapper;
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 
 /**
- * @method \Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig getConfig()
- * @method \Spryker\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface getRepository()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig getConfig()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface getRepository()
  */
 class ClickAndCollectExamplePersistenceFactory extends AbstractPersistenceFactory
 {
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Persistence\Propel\Mapper\ProductOfferMapper
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Persistence\Propel\Mapper\ProductOfferMapper
      */
     public function createProductOfferMapper(): ProductOfferMapper
     {
@@ -31,7 +31,7 @@ class ClickAndCollectExamplePersistenceFactory extends AbstractPersistenceFactor
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Persistence\Propel\Mapper\ProductOfferStockMapper
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Persistence\Propel\Mapper\ProductOfferStockMapper
      */
     public function createProductOfferStockMapper(): ProductOfferStockMapper
     {
@@ -39,7 +39,7 @@ class ClickAndCollectExamplePersistenceFactory extends AbstractPersistenceFactor
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Persistence\Propel\Mapper\PriceProductOfferMapper
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Persistence\Propel\Mapper\PriceProductOfferMapper
      */
     public function createPriceProductOfferMapper(): PriceProductOfferMapper
     {

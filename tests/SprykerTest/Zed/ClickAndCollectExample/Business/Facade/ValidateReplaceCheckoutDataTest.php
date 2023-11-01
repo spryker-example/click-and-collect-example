@@ -19,9 +19,9 @@ use Generated\Shared\Transfer\ServicePointTransfer;
 use Generated\Shared\Transfer\ShipmentMethodCollectionTransfer;
 use Generated\Shared\Transfer\ShipmentMethodTransfer;
 use Generated\Shared\Transfer\ShipmentTypeTransfer;
-use Spryker\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacer;
-use Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToServicePointFacadeBridge;
-use Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToShipmentFacadeBridge;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacer;
+use SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToServicePointFacadeBridge;
+use SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToShipmentFacadeBridge;
 use SprykerTest\Zed\ClickAndCollectExample\ClickAndCollectExampleBusinessTester;
 
 /**

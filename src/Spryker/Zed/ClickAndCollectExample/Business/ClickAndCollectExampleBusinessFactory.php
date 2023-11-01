@@ -5,43 +5,43 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Business;
+namespace SprykerExample\Zed\ClickAndCollectExample\Business;
 
-use Spryker\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteReplacementResponseErrorAdder;
-use Spryker\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteReplacementResponseErrorAdderInterface;
-use Spryker\Zed\ClickAndCollectExample\Business\Expander\ItemExpander;
-use Spryker\Zed\ClickAndCollectExample\Business\Expander\ItemExpanderInterface;
-use Spryker\Zed\ClickAndCollectExample\Business\Expander\ProductOfferServicePointExpander;
-use Spryker\Zed\ClickAndCollectExample\Business\Expander\ProductOfferServicePointExpanderInterface;
-use Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\DeliveryProductOfferReplacementChecker;
-use Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\PickupProductOfferReplacementChecker;
-use Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface;
-use Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinder;
-use Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface;
-use Spryker\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReader;
-use Spryker\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface;
-use Spryker\Zed\ClickAndCollectExample\Business\Replacer\DeliveryItemProductOfferReplacer;
-use Spryker\Zed\ClickAndCollectExample\Business\Replacer\ItemProductOfferReplacerInterface;
-use Spryker\Zed\ClickAndCollectExample\Business\Replacer\PickupItemProductOfferReplacer;
-use Spryker\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacer;
-use Spryker\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacerInterface;
-use Spryker\Zed\ClickAndCollectExample\Business\Validator\QuoteItemProductOfferReplacementValidator;
-use Spryker\Zed\ClickAndCollectExample\Business\Validator\QuoteItemProductOfferReplacementValidatorInterface;
-use Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleDependencyProvider;
-use Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeInterface;
-use Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToServicePointFacadeInterface;
-use Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToShipmentFacadeInterface;
-use Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToStoreFacadeInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteReplacementResponseErrorAdder;
+use SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteReplacementResponseErrorAdderInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Expander\ItemExpander;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Expander\ItemExpanderInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Expander\ProductOfferServicePointExpander;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Expander\ProductOfferServicePointExpanderInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\DeliveryProductOfferReplacementChecker;
+use SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\PickupProductOfferReplacementChecker;
+use SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinder;
+use SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReader;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Replacer\DeliveryItemProductOfferReplacer;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Replacer\ItemProductOfferReplacerInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Replacer\PickupItemProductOfferReplacer;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacer;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacerInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Validator\QuoteItemProductOfferReplacementValidator;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Validator\QuoteItemProductOfferReplacementValidatorInterface;
+use SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleDependencyProvider;
+use SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToServicePointFacadeInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToShipmentFacadeInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToStoreFacadeInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 
 /**
- * @method \Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig getConfig()
- * @method \Spryker\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface getRepository()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig getConfig()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface getRepository()
  */
 class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Business\Replacer\ItemProductOfferReplacerInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Business\Replacer\ItemProductOfferReplacerInterface
      */
     public function createPickupItemProductOfferReplacer(): ItemProductOfferReplacerInterface
     {
@@ -54,7 +54,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Business\Replacer\ItemProductOfferReplacerInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Business\Replacer\ItemProductOfferReplacerInterface
      */
     public function createDeliveryItemProductOfferReplacer(): ItemProductOfferReplacerInterface
     {
@@ -67,7 +67,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacerInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacerInterface
      */
     public function createQuoteProductOfferReplacer(): QuoteProductOfferReplacerInterface
     {
@@ -88,7 +88,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface
      */
     public function createProductOfferServicePointReader(): ProductOfferServicePointReaderInterface
     {
@@ -99,7 +99,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Business\Expander\ProductOfferServicePointExpanderInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Business\Expander\ProductOfferServicePointExpanderInterface
      */
     public function createProductOfferServicePointExpander(): ProductOfferServicePointExpanderInterface
     {
@@ -109,7 +109,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface
      */
     public function createPickupProductOfferReplacementFinder(): ProductOfferReplacementFinderInterface
     {
@@ -121,7 +121,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface
      */
     public function createDeliveryProductOfferReplacementFinder(): ProductOfferReplacementFinderInterface
     {
@@ -133,7 +133,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteReplacementResponseErrorAdderInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteReplacementResponseErrorAdderInterface
      */
     public function createQuoteReplacementResponseErrorAdder(): QuoteReplacementResponseErrorAdderInterface
     {
@@ -141,7 +141,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface
      */
     public function createPickupProductOfferReplacementChecker(): ProductOfferReplacementCheckerInterface
     {
@@ -149,7 +149,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementChecker\ProductOfferReplacementCheckerInterface
      */
     public function createDeliveryProductOfferReplacementChecker(): ProductOfferReplacementCheckerInterface
     {
@@ -157,7 +157,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Business\Validator\QuoteItemProductOfferReplacementValidatorInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Business\Validator\QuoteItemProductOfferReplacementValidatorInterface
      */
     public function createQuoteItemProductOfferReplacementValidator(): QuoteItemProductOfferReplacementValidatorInterface
     {
@@ -168,7 +168,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Business\Expander\ItemExpanderInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Business\Expander\ItemExpanderInterface
      */
     public function createItemExpander(): ItemExpanderInterface
     {
@@ -179,7 +179,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToServicePointFacadeInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToServicePointFacadeInterface
      */
     public function getServicePointFacade(): ClickAndCollectExampleToServicePointFacadeInterface
     {
@@ -187,7 +187,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToShipmentFacadeInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToShipmentFacadeInterface
      */
     public function getShipmentFacade(): ClickAndCollectExampleToShipmentFacadeInterface
     {
@@ -195,7 +195,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToStoreFacadeInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToStoreFacadeInterface
      */
     public function getStoreFacade(): ClickAndCollectExampleToStoreFacadeInterface
     {
@@ -203,7 +203,7 @@ class ClickAndCollectExampleBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return \Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeInterface
+     * @return \SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToAvailabilityFacadeInterface
      */
     public function getAvailabilityFacade(): ClickAndCollectExampleToAvailabilityFacadeInterface
     {

@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Business\Expander;
+namespace SprykerExample\Zed\ClickAndCollectExample\Business\Expander;
 
 use Generated\Shared\Transfer\CheckoutDataTransfer;
 use Generated\Shared\Transfer\ItemCollectionTransfer;
@@ -16,24 +16,24 @@ use Generated\Shared\Transfer\ShipmentMethodCollectionTransfer;
 use Generated\Shared\Transfer\ShipmentMethodConditionsTransfer;
 use Generated\Shared\Transfer\ShipmentMethodCriteriaTransfer;
 use Generated\Shared\Transfer\ShipmentTransfer;
-use Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToServicePointFacadeInterface;
-use Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToShipmentFacadeInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToServicePointFacadeInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToShipmentFacadeInterface;
 
 class ItemExpander implements ItemExpanderInterface
 {
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToServicePointFacadeInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToServicePointFacadeInterface
      */
     protected ClickAndCollectExampleToServicePointFacadeInterface $servicePointFacade;
 
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToShipmentFacadeInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToShipmentFacadeInterface
      */
     protected ClickAndCollectExampleToShipmentFacadeInterface $shipmentFacade;
 
     /**
-     * @param \Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToServicePointFacadeInterface $servicePointFacade
-     * @param \Spryker\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToShipmentFacadeInterface $shipmentFacade
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToServicePointFacadeInterface $servicePointFacade
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Dependency\Facade\ClickAndCollectExampleToShipmentFacadeInterface $shipmentFacade
      */
     public function __construct(
         ClickAndCollectExampleToServicePointFacadeInterface $servicePointFacade,

@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Business;
+namespace SprykerExample\Zed\ClickAndCollectExample\Business;
 
 use Generated\Shared\Transfer\CheckoutDataTransfer;
 use Generated\Shared\Transfer\CheckoutResponseTransfer;
@@ -14,8 +14,8 @@ use Generated\Shared\Transfer\QuoteTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
- * @method \Spryker\Zed\ClickAndCollectExample\Business\ClickAndCollectExampleBusinessFactory getFactory()
- * @method \Spryker\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface getRepository()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\Business\ClickAndCollectExampleBusinessFactory getFactory()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface getRepository()
  */
 class ClickAndCollectExampleFacade extends AbstractFacade implements ClickAndCollectExampleFacadeInterface
 {

@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Business\Validator;
+namespace SprykerExample\Zed\ClickAndCollectExample\Business\Validator;
 
 use Generated\Shared\Transfer\CheckoutDataTransfer;
 use Generated\Shared\Transfer\CheckoutErrorTransfer;
@@ -13,24 +13,24 @@ use Generated\Shared\Transfer\CheckoutResponseTransfer;
 use Generated\Shared\Transfer\ItemCollectionTransfer;
 use Generated\Shared\Transfer\QuoteReplacementResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use Spryker\Zed\ClickAndCollectExample\Business\Expander\ItemExpanderInterface;
-use Spryker\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacerInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Expander\ItemExpanderInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacerInterface;
 
 class QuoteItemProductOfferReplacementValidator implements QuoteItemProductOfferReplacementValidatorInterface
 {
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacerInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacerInterface
      */
     protected QuoteProductOfferReplacerInterface $quoteProductOfferReplacer;
 
     /**
-     * @var \Spryker\Zed\ClickAndCollectExample\Business\Expander\ItemExpanderInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Business\Expander\ItemExpanderInterface
      */
     protected ItemExpanderInterface $itemExpander;
 
     /**
-     * @param \Spryker\Zed\ClickAndCollectExample\Business\Expander\ItemExpanderInterface $itemExpander
-     * @param \Spryker\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacerInterface $quoteProductOfferReplacer
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Business\Expander\ItemExpanderInterface $itemExpander
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Business\Replacer\QuoteProductOfferReplacerInterface $quoteProductOfferReplacer
      */
     public function __construct(
         ItemExpanderInterface $itemExpander,

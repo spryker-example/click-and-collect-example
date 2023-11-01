@@ -27,7 +27,7 @@ use Generated\Shared\Transfer\ServiceTypeTransfer;
 use Generated\Shared\Transfer\ShipmentTypeTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Orm\Zed\ShipmentTypeServicePoint\Persistence\SpyShipmentTypeServiceTypeQuery;
-use Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig;
+use SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig;
 
 /**
  * Inherited Methods
@@ -42,7 +42,7 @@ use Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig;
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
  * @method void pause($vars = [])
- * @method \Spryker\Zed\ClickAndCollectExample\Business\ClickAndCollectExampleFacadeInterface getFacade()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\Business\ClickAndCollectExampleFacadeInterface getFacade()
  *
  * @SuppressWarnings(\SprykerTest\Zed\ClickAndCollectExample\PHPMD)
  */

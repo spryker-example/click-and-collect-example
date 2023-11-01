@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Communication\Plugin\ServicePointCart;
+namespace SprykerExample\Zed\ClickAndCollectExample\Communication\Plugin\ServicePointCart;
 
 use Generated\Shared\Transfer\QuoteReplacementResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
@@ -13,10 +13,10 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\ServicePointCartExtension\Dependency\Plugin\ServicePointQuoteItemReplaceStrategyPluginInterface;
 
 /**
- * @method \Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig getConfig()
- * @method \Spryker\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface getRepository()
- * @method \Spryker\Zed\ClickAndCollectExample\Business\ClickAndCollectExampleFacadeInterface getFacade()
- * @method \Spryker\Zed\ClickAndCollectExample\Communication\ClickAndCollectExampleCommunicationFactory getFactory()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig getConfig()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExampleRepositoryInterface getRepository()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\Business\ClickAndCollectExampleFacadeInterface getFacade()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\Communication\ClickAndCollectExampleCommunicationFactory getFactory()
  */
 class ClickAndCollectExampleServicePointQuoteItemReplaceStrategyPlugin extends AbstractPlugin implements ServicePointQuoteItemReplaceStrategyPluginInterface
 {

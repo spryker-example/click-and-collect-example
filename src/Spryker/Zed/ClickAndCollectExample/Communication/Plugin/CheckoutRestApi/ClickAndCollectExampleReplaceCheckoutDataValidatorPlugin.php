@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Communication\Plugin\CheckoutRestApi;
+namespace SprykerExample\Zed\ClickAndCollectExample\Communication\Plugin\CheckoutRestApi;
 
 use Generated\Shared\Transfer\CheckoutDataTransfer;
 use Generated\Shared\Transfer\CheckoutResponseTransfer;
@@ -13,9 +13,9 @@ use Spryker\Zed\CheckoutRestApiExtension\Dependency\Plugin\CheckoutDataValidator
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 
 /**
- * @method \Spryker\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig getConfig()
- * @method \Spryker\Zed\ClickAndCollectExample\Business\ClickAndCollectExampleFacadeInterface getFacade()
- * @method \Spryker\Zed\ClickAndCollectExample\Communication\ClickAndCollectExampleCommunicationFactory getFactory()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig getConfig()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\Business\ClickAndCollectExampleFacadeInterface getFacade()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\Communication\ClickAndCollectExampleCommunicationFactory getFactory()
  */
 class ClickAndCollectExampleReplaceCheckoutDataValidatorPlugin extends AbstractPlugin implements CheckoutDataValidatorPluginInterface
 {

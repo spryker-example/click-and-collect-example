@@ -5,12 +5,12 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Persistence\Propel\Mapper;
+namespace SprykerExample\Zed\ClickAndCollectExample\Persistence\Propel\Mapper;
 
 use Generated\Shared\Transfer\ProductOfferPriceTransfer;
 use Orm\Zed\PriceProductOffer\Persistence\SpyPriceProductOffer;
 use Propel\Runtime\Collection\ObjectCollection;
-use Spryker\Shared\ClickAndCollectExample\ClickAndCollectExampleConfig;
+use SprykerExample\Shared\ClickAndCollectExample\ClickAndCollectExampleConfig;
 
 class PriceProductOfferMapper
 {

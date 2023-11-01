@@ -5,7 +5,7 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace Spryker\Zed\ClickAndCollectExample\Persistence;
+namespace SprykerExample\Zed\ClickAndCollectExample\Persistence;
 
 use Generated\Shared\Transfer\ProductOfferServicePointCriteriaTransfer;
 use Orm\Zed\ShipmentType\Persistence\Map\SpyShipmentTypeTableMap;
@@ -14,7 +14,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
 
 /**
- * @method \Spryker\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExamplePersistenceFactory getFactory()
+ * @method \SprykerExample\Zed\ClickAndCollectExample\Persistence\ClickAndCollectExamplePersistenceFactory getFactory()
  */
 class ClickAndCollectExampleRepository extends AbstractRepository implements ClickAndCollectExampleRepositoryInterface
 {
