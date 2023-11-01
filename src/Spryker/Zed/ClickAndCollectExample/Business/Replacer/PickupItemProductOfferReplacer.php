@@ -5,18 +5,18 @@
  * For full license information, please view the LICENSE file that was distributed with this source code.
  */
 
-namespace SprykerExample\Zed\ClickAndCollectExample\Business\QuoteItemReplacer;
+namespace SprykerExample\Zed\ClickAndCollectExample\Business\Replacer;
 
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\ProductOfferServicePointCriteriaTransfer;
-use Generated\Shared\Transfer\QuoteResponseTransfer;
+use Generated\Shared\Transfer\QuoteReplacementResponseTransfer;
 use Generated\Shared\Transfer\QuoteTransfer;
-use SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteResponseErrorAdderInterface;
+use SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteReplacementResponseErrorAdderInterface;
 use SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface;
 use SprykerExample\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface;
 use SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig;
 
-class PickupQuoteItemReplacer implements QuoteItemReplacerInterface
+class PickupItemProductOfferReplacer implements ItemProductOfferReplacerInterface
 {
     /**
      * @var \SprykerExample\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface
@@ -29,9 +29,9 @@ class PickupQuoteItemReplacer implements QuoteItemReplacerInterface
     protected ProductOfferReplacementFinderInterface $replacementFinder;
 
     /**
-     * @var \SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteResponseErrorAdderInterface
+     * @var \SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteReplacementResponseErrorAdderInterface
      */
-    protected QuoteResponseErrorAdderInterface $quoteResponseErrorAdder;
+    protected QuoteReplacementResponseErrorAdderInterface $quoteReplacementResponseErrorAdder;
 
     /**
      * @var \SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig
@@ -41,32 +41,32 @@ class PickupQuoteItemReplacer implements QuoteItemReplacerInterface
     /**
      * @param \SprykerExample\Zed\ClickAndCollectExample\Business\Reader\ProductOfferServicePointReaderInterface $productOfferServicePointReader
      * @param \SprykerExample\Zed\ClickAndCollectExample\Business\ProductOfferReplacementFinder\ProductOfferReplacementFinderInterface $replacementFinder
-     * @param \SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteResponseErrorAdderInterface $quoteResponseErrorAdder
+     * @param \SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder\QuoteReplacementResponseErrorAdderInterface $quoteReplacementResponseErrorAdder
      * @param \SprykerExample\Zed\ClickAndCollectExample\ClickAndCollectExampleConfig $clickAndCollectExampleConfig
      */
     public function __construct(
         ProductOfferServicePointReaderInterface $productOfferServicePointReader,
         ProductOfferReplacementFinderInterface $replacementFinder,
-        QuoteResponseErrorAdderInterface $quoteResponseErrorAdder,
+        QuoteReplacementResponseErrorAdderInterface $quoteReplacementResponseErrorAdder,
         ClickAndCollectExampleConfig $clickAndCollectExampleConfig
     ) {
         $this->productOfferServicePointReader = $productOfferServicePointReader;
         $this->replacementFinder = $replacementFinder;
-        $this->quoteResponseErrorAdder = $quoteResponseErrorAdder;
+        $this->quoteReplacementResponseErrorAdder = $quoteReplacementResponseErrorAdder;
         $this->clickAndCollectExampleConfig = $clickAndCollectExampleConfig;
     }
 
     /**
      * @param \Generated\Shared\Transfer\QuoteTransfer $quoteTransfer
      *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
+     * @return \Generated\Shared\Transfer\QuoteReplacementResponseTransfer
      */
-    public function replaceQuoteItemProductOffers(QuoteTransfer $quoteTransfer): QuoteResponseTransfer
+    public function replaceQuoteItemProductOffers(QuoteTransfer $quoteTransfer): QuoteReplacementResponseTransfer
     {
-        $quoteResponseTransfer = (new QuoteResponseTransfer())->setQuoteTransfer($quoteTransfer)->setIsSuccessful(true);
-        $itemTransfersForReplacement = $this->getQuoteItemsAvailableForReplacement($quoteResponseTransfer);
+        $quoteReplacementResponseTransfer = (new QuoteReplacementResponseTransfer())->setQuote($quoteTransfer);
+        $itemTransfersForReplacement = $this->getQuoteItemsAvailableForReplacement($quoteReplacementResponseTransfer);
         if (count($itemTransfersForReplacement) === 0) {
-            return $quoteResponseTransfer;
+            return $quoteReplacementResponseTransfer;
         }
         $productOfferServicePointCriteriaTransfer = $this
             ->createProductOfferServicePointCriteriaTransfer($quoteTransfer, $itemTransfersForReplacement);
@@ -78,8 +78,8 @@ class PickupQuoteItemReplacer implements QuoteItemReplacerInterface
             $replacementProductOfferTransfer = $this->replacementFinder
                 ->findSuitableProductOffer($itemTransfer, $productOfferServicePointTransfers);
             if (!$replacementProductOfferTransfer) {
-                $itemTransfer->setShipmentType()->setShipment()->setServicePoint();
-                $this->quoteResponseErrorAdder->addError($quoteResponseTransfer, $itemTransfer);
+                $quoteReplacementResponseTransfer->addFailedReplacementItem($itemTransfer);
+                $this->quoteReplacementResponseErrorAdder->addError($quoteReplacementResponseTransfer, $itemTransfer);
 
                 continue;
             }
@@ -88,25 +88,25 @@ class PickupQuoteItemReplacer implements QuoteItemReplacerInterface
             $itemTransfer->setGroupKey(null);
         }
 
-        return $quoteResponseTransfer;
+        return $quoteReplacementResponseTransfer;
     }
 
     /**
-     * @param \Generated\Shared\Transfer\QuoteResponseTransfer $quoteResponseTransfer
+     * @param \Generated\Shared\Transfer\QuoteReplacementResponseTransfer $quoteReplacementResponseTransfer
      *
      * @return list<\Generated\Shared\Transfer\ItemTransfer>
      */
-    protected function getQuoteItemsAvailableForReplacement(QuoteResponseTransfer $quoteResponseTransfer): array
+    protected function getQuoteItemsAvailableForReplacement(QuoteReplacementResponseTransfer $quoteReplacementResponseTransfer): array
     {
         $quoteItemTransfersForReplacement = [];
-        foreach ($quoteResponseTransfer->getQuoteTransferOrFail()->getItems() as $itemTransfer) {
+        foreach ($quoteReplacementResponseTransfer->getQuoteOrFail()->getItems() as $itemTransfer) {
             if (!$this->isQuoteItemApplicable($itemTransfer)) {
                 continue;
             }
 
             if (!$this->isQuoteItemValid($itemTransfer)) {
-                $itemTransfer->setShipmentType(null)->setShipment(null)->setServicePoint(null);
-                $this->quoteResponseErrorAdder->addError($quoteResponseTransfer, $itemTransfer);
+                $quoteReplacementResponseTransfer->addFailedReplacementItem($itemTransfer);
+                $this->quoteReplacementResponseErrorAdder->addError($quoteReplacementResponseTransfer, $itemTransfer);
 
                 continue;
             }
@@ -124,7 +124,8 @@ class PickupQuoteItemReplacer implements QuoteItemReplacerInterface
      */
     protected function isQuoteItemApplicable(ItemTransfer $itemTransfer): bool
     {
-        return $itemTransfer->getShipmentType() !== null
+        return $itemTransfer->getShipmentType()
+            && !$this->isItemProductBundle($itemTransfer)
             && $itemTransfer->getShipmentTypeOrFail()->getKey() === $this->clickAndCollectExampleConfig->getPickupShipmentTypeKey();
     }
 
@@ -163,5 +164,15 @@ class PickupQuoteItemReplacer implements QuoteItemReplacerInterface
         }
 
         return $productOfferServicePointCriteriaTransfer;
+    }
+
+    /**
+     * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
+     *
+     * @return bool
+     */
+    protected function isItemProductBundle(ItemTransfer $itemTransfer): bool
+    {
+        return $itemTransfer->getRelatedBundleItemIdentifier() || $itemTransfer->getBundleItemIdentifier();
     }
 }

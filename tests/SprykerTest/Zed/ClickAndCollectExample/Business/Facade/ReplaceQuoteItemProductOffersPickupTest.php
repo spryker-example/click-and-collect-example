@@ -8,7 +8,6 @@
 namespace SprykerTest\Zed\ClickAndCollectExample\Business\Facade;
 
 use ArrayObject;
-use Codeception\Test\Unit;
 use Generated\Shared\Transfer\ProductOfferStockTransfer;
 use Generated\Shared\Transfer\ProductOfferTransfer;
 use Generated\Shared\Transfer\ServicePointTransfer;
@@ -24,25 +23,11 @@ use SprykerTest\Zed\ClickAndCollectExample\ClickAndCollectExampleBusinessTester;
  * @group ClickAndCollectExample
  * @group Business
  * @group Facade
- * @group ReplacePickupQuoteItemProductOffersTest
+ * @group ReplaceQuoteItemProductOffersPickupTest
  * Add your own group annotations below this line
  */
-class ReplacePickupQuoteItemProductOffersTest extends Unit
+class ReplaceQuoteItemProductOffersPickupTest extends ClickAndCollectExampleFacadeMocks
 {
-    /**
-     * @var \SprykerTest\Zed\ClickAndCollectExample\ClickAndCollectExampleBusinessTester
-     */
-    protected ClickAndCollectExampleBusinessTester $tester;
-
-    /**
-     * @return void
-     */
-    protected function _setUp(): void
-    {
-        parent::_setUp();
-        $this->tester->mockClickAndCollectExampleConfig();
-    }
-
     /**
      * @return void
      */
@@ -71,6 +56,8 @@ class ReplacePickupQuoteItemProductOffersTest extends Unit
             ],
         );
 
+        $this->mockAvailabilityFacade($productOfferTransfer1);
+
         $productOfferTransfer2 = $this->tester->haveProductOffer([
             ProductOfferTransfer::MERCHANT_REFERENCE => ClickAndCollectExampleBusinessTester::TEST_MERCHANT_REFERENCE_1,
             ProductOfferTransfer::CONCRETE_SKU => $productConcreteTransfer->getSku(),
@@ -87,13 +74,14 @@ class ReplacePickupQuoteItemProductOffersTest extends Unit
         $quoteTransfer->addItem($itemTransfer);
 
         // Act
-        $quoteResponseTransfer = $this->tester->getFacade()->replacePickupQuoteItemProductOffers($quoteTransfer);
+        $quoteReplacementResponseTransfer = $this->tester->getFacade()->replaceQuoteItemProductOffers($quoteTransfer);
 
         // Assert
-        $quoteItemTransfer = $quoteResponseTransfer->getQuoteTransferOrFail()->getItems()[0];
+        $quoteItemTransfer = $quoteReplacementResponseTransfer->getQuoteOrFail()->getItems()[0];
         $this->assertSame($productOfferTransfer1->getProductOfferReference(), $quoteItemTransfer->getProductOfferReference());
         $this->assertNull($quoteItemTransfer->getGroupKey());
-        $this->assertEmpty($quoteResponseTransfer->getErrors());
+        $this->assertEmpty($quoteReplacementResponseTransfer->getErrors());
+        $this->assertEmpty($quoteReplacementResponseTransfer->getFailedReplacementItems());
     }
 
     /**
@@ -124,6 +112,8 @@ class ReplacePickupQuoteItemProductOffersTest extends Unit
             ],
         );
 
+        $this->mockAvailabilityFacade($productOfferTransfer1);
+
         $productOfferTransfer2 = $this->tester->haveProductOffer([
             ProductOfferTransfer::MERCHANT_REFERENCE => null,
             ProductOfferTransfer::CONCRETE_SKU => $productConcreteTransfer->getSku(),
@@ -140,13 +130,14 @@ class ReplacePickupQuoteItemProductOffersTest extends Unit
         $quoteTransfer->addItem($itemTransfer);
 
         // Act
-        $quoteResponseTransfer = $this->tester->getFacade()->replacePickupQuoteItemProductOffers($quoteTransfer);
+        $quoteReplacementResponseTransfer = $this->tester->getFacade()->replaceQuoteItemProductOffers($quoteTransfer);
 
         // Assert
-        $quoteItemTransfer = $quoteResponseTransfer->getQuoteTransferOrFail()->getItems()[0];
+        $quoteItemTransfer = $quoteReplacementResponseTransfer->getQuoteOrFail()->getItems()[0];
         $this->assertSame($productOfferTransfer1->getProductOfferReference(), $quoteItemTransfer->getProductOfferReference());
         $this->assertNull($quoteItemTransfer->getGroupKey());
-        $this->assertEmpty($quoteResponseTransfer->getErrors());
+        $this->assertEmpty($quoteReplacementResponseTransfer->getErrors());
+        $this->assertEmpty($quoteReplacementResponseTransfer->getFailedReplacementItems());
     }
 
     /**
@@ -198,87 +189,14 @@ class ReplacePickupQuoteItemProductOffersTest extends Unit
         $quoteTransfer->addItem($itemTransfer);
 
         // Act
-        $quoteResponseTransfer = $this->tester->getFacade()->replacePickupQuoteItemProductOffers($quoteTransfer);
+        $quoteReplacementResponseTransfer = $this->tester->getFacade()->replaceQuoteItemProductOffers($quoteTransfer);
 
         // Assert
-        $quoteItemTransfer = $quoteResponseTransfer->getQuoteTransferOrFail()->getItems()[0];
-        $this->assertNull($quoteItemTransfer->getShipmentType());
-        $this->assertNull($quoteItemTransfer->getServicePoint());
+        $quoteItemTransfer = $quoteReplacementResponseTransfer->getQuoteOrFail()->getItems()[0];
         $this->assertNotNull($quoteItemTransfer->getGroupKey());
         $this->assertNotNull($quoteItemTransfer->getProductOfferReference());
-        $this->assertCount(1, $quoteResponseTransfer->getErrors());
-    }
-
-    /**
-     * @return void
-     */
-    public function testFailsWhileReplacingProductConcrete(): void
-    {
-        // Arrange
-        $storeTransfer = $this->tester->haveStore();
-        $productConcreteTransfer = $this->tester->haveProduct();
-        $servicePointTransfer = $this->tester->haveServicePoint([
-            ServicePointTransfer::IS_ACTIVE => true,
-            ServicePointTransfer::STORE_RELATION => (new StoreRelationTransfer())->addStores($storeTransfer),
-        ]);
-
-        $itemTransfer = $this->tester->createItemTransfer($productConcreteTransfer)
-            ->setServicePoint($servicePointTransfer)
-            ->setQuantity(1)
-            ->setShipmentType((new ShipmentTypeTransfer())->setKey(ClickAndCollectExampleBusinessTester::TEST_SHIPMENT_TYPE_KEY_PICKUP));
-
-        $quoteTransfer = $this->tester->createQuoteTransfer($storeTransfer);
-        $quoteTransfer->addItem($itemTransfer);
-
-        // Act
-        $quoteResponseTransfer = $this->tester->getFacade()->replacePickupQuoteItemProductOffers($quoteTransfer);
-
-        // Assert
-        $quoteItemTransfer = $quoteResponseTransfer->getQuoteTransferOrFail()->getItems()[0];
-        $this->assertNull($quoteItemTransfer->getShipmentType());
-        $this->assertNull($quoteItemTransfer->getServicePoint());
-        $this->assertNotNull($quoteItemTransfer->getGroupKey());
-        $this->assertNull($quoteItemTransfer->getProductOfferReference());
-        $this->assertCount(1, $quoteResponseTransfer->getErrors());
-    }
-
-    /**
-     * @return void
-     */
-    public function testSkipsProductOfferReplacementWithAnotherShipmentType(): void
-    {
-        // Arrange
-        $storeTransfer = $this->tester->haveStore();
-        $productConcreteTransfer = $this->tester->haveProduct();
-
-        $productOfferTransfer = $this->tester->haveProductOffer([
-            ProductOfferTransfer::MERCHANT_REFERENCE => ClickAndCollectExampleBusinessTester::TEST_MERCHANT_REFERENCE_1,
-            ProductOfferTransfer::CONCRETE_SKU => $productConcreteTransfer->getSku(),
-            ProductOfferTransfer::STORES => new ArrayObject([$storeTransfer]),
-        ]);
-
-        $itemTransfer = $this->tester->createItemTransfer($productConcreteTransfer)
-            ->setMerchantReference($productOfferTransfer->getMerchantReference())
-            ->setQuantity(1)
-            ->setProductOfferReference($productOfferTransfer->getProductOfferReference())
-            ->setShipmentType((new ShipmentTypeTransfer())->setKey(ClickAndCollectExampleBusinessTester::TEST_SHIPMENT_TYPE_KEY_DELIVERY));
-
-        $quoteTransfer = $this->tester->createQuoteTransfer($storeTransfer);
-        $quoteTransfer->addItem($itemTransfer);
-
-        // Act
-        $quoteResponseTransfer = $this->tester->getFacade()->replacePickupQuoteItemProductOffers($quoteTransfer);
-
-        // Assert
-        $quoteItemTransfer = $quoteResponseTransfer->getQuoteTransferOrFail()->getItems()[0];
-        $this->assertSame(
-            $productOfferTransfer->getProductOfferReference(),
-            $quoteItemTransfer->getProductOfferReference(),
-        );
-        $this->assertNotNull($quoteItemTransfer->getShipmentType());
-        $this->assertNotNull($quoteItemTransfer->getGroupKey());
-        $this->assertNotNull($quoteItemTransfer->getProductOfferReference());
-        $this->assertEmpty($quoteResponseTransfer->getErrors());
+        $this->assertCount(1, $quoteReplacementResponseTransfer->getErrors());
+        $this->assertCount(1, $quoteReplacementResponseTransfer->getFailedReplacementItems());
     }
 
     /**
@@ -325,16 +243,16 @@ class ReplacePickupQuoteItemProductOffersTest extends Unit
         $quoteTransfer->addItem($itemTransfer);
 
         // Act
-        $quoteResponseTransfer = $this->tester->getFacade()->replacePickupQuoteItemProductOffers($quoteTransfer);
+        $quoteReplacementResponseTransfer = $this->tester->getFacade()->replaceQuoteItemProductOffers($quoteTransfer);
 
         // Assert
-        $quoteItemTransfer = $quoteResponseTransfer->getQuoteTransferOrFail()->getItems()[0];
+        $quoteItemTransfer = $quoteReplacementResponseTransfer->getQuoteOrFail()->getItems()[0];
         $this->assertSame(
             $productOfferTransfer->getProductOfferReference(),
             $quoteItemTransfer->getProductOfferReference(),
         );
-        $this->assertNull($quoteItemTransfer->getShipmentType());
-        $this->assertCount(1, $quoteResponseTransfer->getErrors());
+        $this->assertCount(1, $quoteReplacementResponseTransfer->getErrors());
+        $this->assertCount(1, $quoteReplacementResponseTransfer->getFailedReplacementItems());
     }
 
     /**
@@ -383,16 +301,16 @@ class ReplacePickupQuoteItemProductOffersTest extends Unit
         $quoteTransfer->addItem($itemTransfer);
 
         // Act
-        $quoteResponseTransfer = $this->tester->getFacade()->replacePickupQuoteItemProductOffers($quoteTransfer);
+        $quoteReplacementResponseTransfer = $this->tester->getFacade()->replaceQuoteItemProductOffers($quoteTransfer);
 
         // Assert
-        $quoteItemTransfer = $quoteResponseTransfer->getQuoteTransferOrFail()->getItems()[0];
+        $quoteItemTransfer = $quoteReplacementResponseTransfer->getQuoteOrFail()->getItems()[0];
         $this->assertSame(
             $productOfferTransfer->getProductOfferReference(),
             $quoteItemTransfer->getProductOfferReference(),
         );
-        $this->assertNull($quoteItemTransfer->getShipmentType());
-        $this->assertCount(1, $quoteResponseTransfer->getErrors());
+        $this->assertCount(1, $quoteReplacementResponseTransfer->getErrors());
+        $this->assertCount(1, $quoteReplacementResponseTransfer->getFailedReplacementItems());
     }
 
     /**
@@ -439,15 +357,14 @@ class ReplacePickupQuoteItemProductOffersTest extends Unit
         $quoteTransfer->addItem($itemTransfer);
 
         // Act
-        $quoteResponseTransfer = $this->tester->getFacade()->replacePickupQuoteItemProductOffers($quoteTransfer);
+        $quoteReplacementResponseTransfer = $this->tester->getFacade()->replaceQuoteItemProductOffers($quoteTransfer);
 
         // Assert
-        $quoteItemTransfer = $quoteResponseTransfer->getQuoteTransferOrFail()->getItems()[0];
-        $this->assertNull($quoteItemTransfer->getShipmentType());
-        $this->assertNull($quoteItemTransfer->getServicePoint());
+        $quoteItemTransfer = $quoteReplacementResponseTransfer->getQuoteOrFail()->getItems()[0];
         $this->assertNotNull($quoteItemTransfer->getGroupKey());
         $this->assertNotNull($quoteItemTransfer->getProductOfferReference());
-        $this->assertCount(1, $quoteResponseTransfer->getErrors());
+        $this->assertCount(1, $quoteReplacementResponseTransfer->getErrors());
+        $this->assertCount(1, $quoteReplacementResponseTransfer->getFailedReplacementItems());
     }
 
     /**
@@ -494,15 +411,15 @@ class ReplacePickupQuoteItemProductOffersTest extends Unit
         $quoteTransfer->addItem($itemTransfer);
 
         // Act
-        $quoteResponseTransfer = $this->tester->getFacade()->replacePickupQuoteItemProductOffers($quoteTransfer);
+        $quoteReplacementResponseTransfer = $this->tester->getFacade()->replaceQuoteItemProductOffers($quoteTransfer);
 
         // Assert
-        $quoteItemTransfer = $quoteResponseTransfer->getQuoteTransferOrFail()->getItems()[0];
+        $quoteItemTransfer = $quoteReplacementResponseTransfer->getQuoteOrFail()->getItems()[0];
         $this->assertSame(
             $productOfferTransfer2->getProductOfferReference(),
             $quoteItemTransfer->getProductOfferReference(),
         );
-        $this->assertNull($quoteItemTransfer->getShipmentType());
-        $this->assertCount(1, $quoteResponseTransfer->getErrors());
+        $this->assertCount(1, $quoteReplacementResponseTransfer->getErrors());
+        $this->assertCount(1, $quoteReplacementResponseTransfer->getFailedReplacementItems());
     }
 }

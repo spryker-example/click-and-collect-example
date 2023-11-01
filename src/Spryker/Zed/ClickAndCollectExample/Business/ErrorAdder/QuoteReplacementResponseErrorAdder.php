@@ -9,9 +9,9 @@ namespace SprykerExample\Zed\ClickAndCollectExample\Business\ErrorAdder;
 
 use Generated\Shared\Transfer\ItemTransfer;
 use Generated\Shared\Transfer\QuoteErrorTransfer;
-use Generated\Shared\Transfer\QuoteResponseTransfer;
+use Generated\Shared\Transfer\QuoteReplacementResponseTransfer;
 
-class QuoteResponseErrorAdder implements QuoteResponseErrorAdderInterface
+class QuoteReplacementResponseErrorAdder implements QuoteReplacementResponseErrorAdderInterface
 {
     /**
      * @var string
@@ -34,21 +34,21 @@ class QuoteResponseErrorAdder implements QuoteResponseErrorAdderInterface
     protected const ITEM_NAME_POSTFIX = '...';
 
     /**
-     * @param \Generated\Shared\Transfer\QuoteResponseTransfer $quoteResponseTransfer
+     * @param \Generated\Shared\Transfer\QuoteReplacementResponseTransfer $quoteReplacementResponseTransfer
      * @param \Generated\Shared\Transfer\ItemTransfer $itemTransfer
      *
-     * @return \Generated\Shared\Transfer\QuoteResponseTransfer
+     * @return \Generated\Shared\Transfer\QuoteReplacementResponseTransfer
      */
-    public function addError(QuoteResponseTransfer $quoteResponseTransfer, ItemTransfer $itemTransfer): QuoteResponseTransfer
+    public function addError(QuoteReplacementResponseTransfer $quoteReplacementResponseTransfer, ItemTransfer $itemTransfer): QuoteReplacementResponseTransfer
     {
-        $quoteResponseTransfer->addError($this->createQuoteErrorTransfer(
+        $quoteReplacementResponseTransfer->addError($this->createQuoteErrorTransfer(
             static::GLOSSARY_KEY_ITEM_REPLACEMENT_NOT_FOUND,
             [
                 static::GLOSSARY_KEY_PARAMETER_ITEM => $this->getTruncatedItemTransferName($itemTransfer),
             ],
         ));
 
-        return $quoteResponseTransfer;
+        return $quoteReplacementResponseTransfer;
     }
 
     /**
